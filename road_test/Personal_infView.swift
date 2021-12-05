@@ -10,6 +10,7 @@ import SwiftUI
 struct Personal_infView: View {
     @State private var Showtest = false
     @State private var name = ""
+    @State private var gen = ""
     @State private var ps = ""
     @State private var birthday = Date()
     @State private var nation = "本國"
@@ -36,10 +37,10 @@ struct Personal_infView: View {
                         Toggle("性別：\(gender ? "男" : "女")", isOn: $gender)
                             .onChange(of: gender) { newValue in
                                 if(newValue){
-                                    name+="先生"
+                                    gen = "先生"
                                 }
                                 else{
-                                    name+="小姐"
+                                    gen = "小姐"
                                 }
                             }
                     }
@@ -83,7 +84,7 @@ struct Personal_infView: View {
                     } label: {
                         Text("開始考試")
                     }.fullScreenCover(isPresented: $Showtest) {
-                        RoadTestView(Showtest: $Showtest, name: $name, birthday: $birthday, nation: $nation, height: $height, weight: $weight, gender: $gender)
+                        RoadTestView(Showtest: $Showtest, name: $name,gen:$gen, birthday: $birthday, nation: $nation, height: $height, weight: $weight, gender: $gender)
                     }
                 }
             }

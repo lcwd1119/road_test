@@ -12,6 +12,7 @@ struct TestResultView: View {
     @Binding var incorrect_law:[Question_law]
     @Binding var Showresult:Bool
     @Binding var name:String
+    @Binding var gen:String
     @Binding var birthday:Date
     @Binding var nation:String
     @Binding var height:Double
@@ -19,7 +20,7 @@ struct TestResultView: View {
     @Binding var gender:Bool
     var body: some View {
         VStack{
-            Text("考生姓名:\(name)")
+            Text("考生姓名:\(name)  \(gen)")
             Text("性別:\(gender ? "男" : "女")")
             Text("國籍:\(nation)")
             Text("身高:\(height,specifier: "%.1F")   體重:\(weight)")
@@ -50,12 +51,13 @@ struct TestResultView_Previews: PreviewProvider {
     @State static var demolaw = [Question_law(q: "下列何種違規行為得對汽車所有人逕行舉發處罰：\n\n(1)無照駕駛。\n(2)酒醉駕車。\n(3)違規停車而駕駛人不在場。", ans: 3)]
     @State static var demo = false
     @State static var demoname = ""
+    @State static var demogen = ""
     @State static var demoday = Date()
     @State static var demonation = "本國"
     @State static var demoheight = 100.0
     @State static var demoweight = 30
     @State static var demogender = true
     static var previews: some View {
-        TestResultView(incorrect_mark: $demomark, incorrect_law: $demolaw,Showresult: .constant(true), name: $demoname, birthday: $demoday, nation: $demonation, height: $demoheight, weight: $demoweight, gender: $demogender)
+        TestResultView(incorrect_mark: $demomark, incorrect_law: $demolaw,Showresult: .constant(true), name: $demoname,gen: $demogen, birthday: $demoday, nation: $demonation, height: $demoheight, weight: $demoweight, gender: $demogender)
     }
 }

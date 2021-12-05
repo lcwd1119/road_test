@@ -22,6 +22,7 @@ struct RoadTestView: View {
     @State private var Showalert = false
     @Binding var Showtest:Bool
     @Binding var name:String
+    @Binding var gen:String
     @Binding var birthday:Date
     @Binding var nation:String
     @Binding var height:Double
@@ -237,7 +238,7 @@ struct RoadTestView: View {
                     }
                 }
                 .fullScreenCover(isPresented: $Showresult) {
-                    TestResultView(incorrect_mark:$tmp1,incorrect_law:$tmp2,Showresult: $Showresult, name: $name, birthday: $birthday, nation: $nation, height: $height, weight: $weight, gender: $gender)
+                    TestResultView(incorrect_mark:$tmp1,incorrect_law:$tmp2,Showresult: $Showresult, name: $name,gen:$gen, birthday: $birthday, nation: $nation, height: $height, weight: $weight, gender: $gender)
                 }
             }
         }
@@ -249,12 +250,13 @@ struct RoadTestView: View {
 struct RoadTestView_Previews: PreviewProvider {
     @State static var demo = false
     @State static var demoname = ""
+    @State static var demogen = ""
     @State static var demoday = Date()
     @State static var demonation = "本國"
     @State static var demoheight = 100.0
     @State static var demoweight = 30
     @State static var demogender = true
     static var previews: some View {
-        RoadTestView(Showtest: $demo, name: $demoname, birthday: $demoday, nation: $demonation, height: $demoheight, weight: $demoweight, gender: $demogender)
+        RoadTestView(Showtest: $demo, name: $demoname,gen: $demogen, birthday: $demoday, nation: $demonation, height: $demoheight, weight: $demoweight, gender: $demogender)
     }
 }
